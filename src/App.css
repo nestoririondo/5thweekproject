@@ -2,14 +2,132 @@
   margin: 0;
   padding: 0;
 }
-
-#root {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem;
-}
 body {
   font-family: Verdana, Geneva, sans-serif;
   font-size: 10pt;
-  color: #828282;
+}
+:root {
+  --black: #000;
+  --grey: #828282;
+  --orange: rgb(255, 102, 0);
+  --bckgrnd-clr: rgb(246, 246, 240);
+}
+#root {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 8px 40px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: var(--orange);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px;
+    .n {
+      color: white;
+      width: 20px;
+      height: 20px;
+      border: 1px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hn {
+      font-weight: bold;
+      margin-right: 4px;
+    }
+  }
+}
+.search-bar {
+  display: flex;
+  align-items: center;
+  form {
+    display: flex;
+    gap: 4px;
+    input,
+    select,
+    button {
+      height: 20px;
+      border: none;
+    }
+    input {
+      outline: none;
+      padding-left: 2px;
+      &::placeholder {
+        color: var(--grey);
+        font-size: 9pt;
+      }
+    }
+    button {
+      margin-right: 3px;
+      padding: 2px;
+    }
+    select {
+      padding: 2px;
+    }
+    option {
+      padding: 10px;
+    }
+  }
+}
+
+.content {
+  background-color: var(--bckgrnd-clr);
+  padding: 8px;
+  .story {
+    margin-bottom: 8px;
+    .first-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      img {
+        width: 10px;
+        height: 10px;
+      }
+      .fr-index {
+        color: var(--grey);
+        width: 20px;
+        text-align: right;
+      }
+      .fr-title {
+        color: var(--black);
+        font-size: 10pt;
+        text-decoration: none;
+      }
+      .fr-url {
+        color: var(--grey);
+        a {
+          color: var(--grey);
+          font-size: 9pt;
+          text-decoration: none;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .second-row {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      color: var(--grey);
+      font-size: 9pt;
+      margin-left: 38px;
+      .sr-author {
+        color: var(--grey);
+        font-size: 9pt;
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }

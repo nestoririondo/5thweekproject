@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import Header from "./components/Header";
+import Content from "./components/Content";
+import SearchBar from "./components/SearchBar";
 import "./App.css";
 
 function App() {
@@ -10,7 +13,7 @@ function App() {
     event.preventDefault();
     setIsLoading(true);
     fetch(
-      `https://hn.algolia.com/api/v1/search?query=${search.query}&tags=${search.searchBy}`
+      `https://hn.algolia.com/api/v1/search?query=${search.query}&tags=${search.searchBy}&hitsPerPage=30`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -24,7 +27,7 @@ function App() {
   };
   const getData = () => {
     setIsLoading(true);
-    fetch("http://hn.algolia.com/api/v1/search?tags=front_page")
+    fetch("http://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -44,38 +47,12 @@ function App() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search news about..."
-          onChange={(e) => {
-            handleSearch("query", e.target.value);
-          }}
-        />
-        <select
-          onChange={(e) => {
-            handleSearch("searchBy", e.target.value);
-          }}
-        >
-          <option value="story">Story</option>
-          <option value="comment">Comment</option>
-        </select>
-        <button>Search</button>
-      </form>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : !data || data.hits.length === 0 ? (
-        <p>No data</p>
-      ) : (
-        data &&
-        data.hits.map((news, index) => (
-          <div key={index}>
-            <p>
-              {search.searchBy === "story" ? news.title : news.comment_text}
-            </p>
-          </div>
-        ))
-      )}
+      <Header
+        handleSubmit={handleSubmit}
+        handleSearch={handleSearch}
+        search={search}
+      />
+      <Content data={data} search={search} isLoading={isLoading} />
     </>
   );
 }
