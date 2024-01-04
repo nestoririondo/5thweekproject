@@ -1,14 +1,6 @@
 import triangle from "../images/triangle.svg";
-import Pagination from "./Pagination";
 
-const Content = ({
-  data,
-  isLoading,
-  search,
-  setCurrentPage,
-  currentPage,
-  totalPages,
-}) => {
+const Content = ({ data, isLoading, search, currentPage }) => {
   return (
     <div className="content">
       {isLoading ? (
@@ -23,7 +15,11 @@ const Content = ({
               {search.searchBy === "story" ? (
                 <>
                   <div className="first-row">
-                    <p className="fr-index">{`${index + 1}.`}</p>
+                    <p className="fr-index">
+                      {currentPage === 0
+                        ? `${index + 1}.`
+                        : `${index + 1 + currentPage * 30}.`}
+                    </p>
                     <img className="fr-img" src={triangle} />
                     <a className="fr-title" href={news.url}>
                       <p className="fr-title">{news.title}</p>

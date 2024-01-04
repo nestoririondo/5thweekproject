@@ -30,23 +30,27 @@ body {
     flex-wrap: wrap;
     gap: 4px;
     padding: 2px;
+    a {
+      text-decoration: none;
+      color: black;
+    }
     .n {
-      color: white;
       width: 20px;
       height: 20px;
       border: 1px solid white;
       display: flex;
       justify-content: center;
       align-items: center;
+      a {
+        color: white;
+      }
     }
     .hn {
       font-weight: bold;
       margin-right: 4px;
-      a {
-        text-decoration: none;
-        color: black;
-      }
+      
     }
+    
   }
 }
 .search-bar {
@@ -82,11 +86,16 @@ body {
     }
   }
 }
-
+@keyframes blink {
+  0% {opacity: 1;}
+  50% {opacity: 0.5;}
+  100% {opacity: 1;}
+}
 .content {
   background-color: var(--bckgrnd-clr);
   .loading {
     padding: 20px;
+    animation: blink 200ms linear infinite;
   }
   .story {
     /* margin-bottom: 8px; */
@@ -101,7 +110,6 @@ body {
       }
       .fr-index {
         color: var(--grey);
-        width: 20px;
         text-align: right;
       }
       .fr-title {
