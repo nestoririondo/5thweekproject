@@ -5,7 +5,9 @@ const Header = ({ handleSubmit, handleSearch, search }) => {
     <div className="header">
       <div className="header-left">
         <p className="n">N</p>
-        <p className="hn">Hacker News</p>
+        <p className="hn">
+          <a href="/">Hacker News</a>
+        </p>{" "}
         <p className="">new</p>
         <p>|</p>
         <p className="">past</p>
@@ -20,7 +22,11 @@ const Header = ({ handleSubmit, handleSearch, search }) => {
         <p>|</p>
         <p className="">submit</p>
       </div>
-      <SearchBar handleSubmit={handleSubmit} handleSearch={handleSearch} search={search} />
+      <SearchBar
+        handleSubmit={handleSubmit}
+        handleSearch={handleSearch}
+        search={search}
+      />
     </div>
   );
 };
