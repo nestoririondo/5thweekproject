@@ -17,7 +17,8 @@ function App() {
   // Front page
   useEffect(() => {
     setIsLoading(true);
-    fetch(frontPage)
+    const url = `${frontPage}&page=${currentPage}`;
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -25,44 +26,22 @@ function App() {
         setIsLoading(false);
       })
       .catch((error) => console.error(error));
+  }, [frontPage, currentPage]);
+
+  // Reset current page when front page changes
+  useEffect(() => {
+    setCurrentPage(0);
   }, [frontPage]);
 
-  // Search
+  // Search submit
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
     setCurrentPage(0);
-    fetch(
-      `https://hn.algolia.com/api/v1/search?query=${search.query}&tags=${search.searchBy}&hitsPerPage=30&page=${currentPage}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        setTotalPages(data.nbPages);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log(error);
-      });
+    setFrontPage(
+      `https://hn.algolia.com/api/v1/search?query=${search.query}&tags=${search.searchBy}&hitsPerPage=30`
+      );
   };
-
-  // https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=30
-
-  useEffect(() => {
-    if (search.query === "") {
-      return;
-    }
-    setIsLoading(true);
-    fetch(`https://hn.algolia.com/api/v1/search?query=${search.query}&tags=${search.searchBy}&hitsPerPage=30&page=${currentPage}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-        setTotalPages(data.nbPages);
-        setIsLoading(false);
-      })
-      .catch((error) => console.error(error));
-  }, [currentPage]);
 
   // Search object
   const handleSearch = (key, value) => {
