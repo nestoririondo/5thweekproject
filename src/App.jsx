@@ -11,7 +11,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [frontPage, setFrontPage] = useState(
-    `http://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30`
+    `https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30`
   );
 
   // Front page

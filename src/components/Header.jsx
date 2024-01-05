@@ -10,7 +10,7 @@ const Header = ({ handleSubmit, handleSearch, search, setFrontPage }) => {
             onClick={(e) => {
               e.preventDefault();
               setFrontPage(
-                "http://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
+                "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
               );
             }}
           >
@@ -23,7 +23,7 @@ const Header = ({ handleSubmit, handleSearch, search, setFrontPage }) => {
             onClick={(e) => {
               e.preventDefault();
               setFrontPage(
-                "http://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
+                "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
               );
             }}
           >
