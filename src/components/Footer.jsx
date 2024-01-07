@@ -1,6 +1,8 @@
-import Pagination from "./Pagination";	
+import Pagination from "./Pagination";
+import githubMark from "../assets/github-mark.svg";
 
-const Footer = ({totalPages, currentPage, setCurrentPage}) => {
+
+const Footer = ({ totalPages, currentPage, setCurrentPage }) => {
   return (
     <footer>
       <Pagination
@@ -27,6 +29,22 @@ const Footer = ({totalPages, currentPage, setCurrentPage}) => {
           <span>|</span>
           <a>Contact</a>
         </div>
+      </div>
+      <div className="contact">
+        <p>
+          Developed by{" "}
+          <a
+            href="
+                    http://www.nestoririondo.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Néstor Iriondo
+          </a>
+        </p>
+        <a href="https://github.com/nestoririondo">
+          <img src={githubMark} />
+        </a>
       </div>
     </footer>
   );

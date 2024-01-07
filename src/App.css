@@ -48,9 +48,7 @@ body {
     .hn {
       font-weight: bold;
       margin-right: 4px;
-      
     }
-    
   }
 }
 .search-bar {
@@ -87,9 +85,15 @@ body {
   }
 }
 @keyframes blink {
-  0% {opacity: 1;}
-  50% {opacity: 0.5;}
-  100% {opacity: 1;}
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 .content {
   background-color: var(--bckgrnd-clr);
@@ -182,5 +186,27 @@ footer {
     padding: 20px 0px;
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .contact {
+    padding: 1rem;
+    font-size: 9pt;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    justify-content: center;
+    a {
+      color: #000000;
+      text-decoration: none;
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+    img {
+      width: 1.5rem;
+      height: 1.5rem; 
+      &:hover {
+        opacity: 0.5;
+      }
+    }
   }
 }
